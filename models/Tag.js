@@ -13,8 +13,9 @@ Tag.init(
       autoIncrement: true,
       allowNull: false,
     },
-    tag_nmame:{
-      type: DataTypes.STRING(64),
+    tag_name:{
+      type: DataTypes.STRING,
+      allowNull: false
     }, 
   },
   {

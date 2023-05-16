@@ -14,7 +14,7 @@ Category.init(
       allowNull: false
     },
     category_name: {
-      type: DataTypes.STRING(64),
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
