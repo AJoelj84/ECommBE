@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'category_id']
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       }
     ]
   })
@@ -20,21 +20,27 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  try{
-    const productCategory = await Category.findByPk(req.params.id, {
-      include: [{model:Product}],
-    })
-    if (!productCategory){
-      res.status(404).json({message: "There are no Categories with that ID!"});
-      return;
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    // be sure to include its associated Products
+    include: {
+      model: Product,
+      attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
     }
-    res.status(200).json(productCategory);
-  }
-    catch(err){
-    res.status(500).json(err);
-  }
-  // find one category by its `id` value
-  // be sure to include its associated Products
+  })
+    .then(productCategory => {
+      if (!productCategory) {
+        res.status(404).json({ message: 'There are no products with that ID!' });
+        return;
+      }
+      res.json(category);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    });
 });
 
 router.post('/', async (req, res) => {
