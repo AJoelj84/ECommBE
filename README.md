@@ -1,5 +1,5 @@
 # ECommBE
-
+This is a Program designed to use MySQL along with Node to create a E-Commerce backend management tool.
 
 # Table of Contents
 [Usage](#Usage)
@@ -11,7 +11,10 @@
 [Screenshots](#Screenshots)
 
 # Usage
-
+Download the GitHub Repository files and install the Node modules by using the npm install commmand,
+Then run the npm start command.
+From there Insomnia can be used with the Routes found in the Screenshots to Add, Delete, and Update
+Products, Tags, and Categories. 
 
 # Links
 
